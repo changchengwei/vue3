@@ -1,28 +1,46 @@
 <template>
-    <el-table
-        :data="tableData"
-        :span-method="arraySpanMethod"
-        row-key="id"
-        border
-        style="width: 100%"
-        @expand-change="open"
-    >
-        <el-table-column type="" prop="name" label="Name" />
-        <el-table-column prop="amount1" label="Amount 1" />
-        <el-table-column prop="amount2" label="Amount 2" />
-        <el-table-column prop="amount3" label="Amount 3" />
-    </el-table>
-    <bugDetails :data="textData"></bugDetails>
+<bugSlot :msg="'A'">
+    <template #bugUp>
+        <el-table
+            :data="tableData"
+            :span-method="arraySpanMethod"
+            row-key="id"
+            border
+        >
+            <el-table-column type="" prop="name" label="Name" />
+            <el-table-column prop="amount1" label="Amount 1" />
+            <el-table-column prop="amount2" label="Amount 2" />
+            <el-table-column prop="amount3" label="Amount 3" />
+        </el-table>
+    </template>
+    <template #bugDown>
+        <el-table
+            :data="tableData"
+            :span-method="arraySpanMethod"
+            row-key="id"
+            border
+            @expand-change="open"
+        >
+            <el-table-column type="" prop="name" label="Name" />
+            <el-table-column prop="amount1" label="Amount 1" />
+            <el-table-column prop="amount2" label="Amount 2" />
+            <el-table-column prop="amount3" label="Amount 3" />
+        </el-table>
+    </template>
+    <template #bugText>
+        <bugDetails :data="textDataObj.formMergingData"></bugDetails>
+    </template>
+</bugSlot>
+
 </template>
 
 <script setup>
-import bugDetails from "../../components/bugDetails.vue";
 import { ref, reactive, onMounted } from "vue";
+import textDataObj from "@/axios/data.js";
 onMounted(() => {
     as();
 });
 
-let textData = ref({ name: "element-plus表格单元格合并&树形结构展开问题", text: "fdsfdsfds" });
 
 let arr = reactive([]);
 const open = (row, expandedRows) => {
@@ -60,7 +78,7 @@ const as = () => {
 };
 
 let spanArr = reactive([]);
-let pos = reactive(0);
+let pos = ref(0);
 const ass = () => {
     spanArr.length = 0;
     data.forEach((item, i) => {
@@ -203,5 +221,5 @@ const tableData = reactive([
     },
 ]);
 </script>
-<style scoped lang='less'>
+<style scoped lang='scss'>
 </style>

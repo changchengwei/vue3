@@ -1,0 +1,51 @@
+
+@import "./theme.scss";
+
+@mixin bg_color(){
+    background: $background-color-bright;
+    [data-theme=dark] & {
+      background: $background-color-dark;
+    }
+}
+
+@mixin bg1_color(){
+    background: $background-color1-bright;
+    [data-theme=dark] & {
+      background: $background-color1-dark;
+    }
+}
+
+@mixin button_font_color(){
+    color: $button-font-color-bright;
+    [data-theme=dark] & {
+        color: $button-font-color-dark;
+    }
+}
+
+@mixin button_color(){
+    background: $button-color-bright;
+    [data-theme=dark] & {
+      background: $button-color-dark;
+    }
+}
+
+@mixin button1_color(){
+    background: $button-color1-bright;
+    [data-theme=dark] & {
+      background: $button-color1-dark;
+    }
+}
+
+@mixin font_color(){
+    color: $font-active-color-bright;
+    [data-theme=dark] & {
+        color: $font-active-color-dark;
+    }
+}
+
+@mixin border_color(){
+    border-color: $border-color-bright;
+    [data-theme=dark] & {
+        border-color: $border-color-dark;
+    }
+}

@@ -1,9 +1,8 @@
 <template>
-    <frames></frames>
+    <router-view></router-view>
 </template>
 <script setup>
-import frames from "./pages/frames/index.vue"
 </script>
-<style scoped lang='less'>
+<style scoped lang='sass'>
 </style>
    
