@@ -1,7 +1,7 @@
 <template>
     <bugSlot :msg="'B'">
         <template #bugShow>
-            <div style="height:400px" id="main"></div>
+            <div style="height:400px" id="promote"></div>
         </template>
         <template #bugText>
             <bugDetails :data="textDataObj.echartsPromoteData"></bugDetails>
@@ -20,31 +20,39 @@ onMounted(() => {
 });
 
 
-let a = 10000;
-
-let xdata = reactive([]); 
+let a = 500;
+let arr = reactive([]);
 let ydata = reactive([]);
-
 for(let i=0;i<a;i++){
-    xdata.push(i);
-    let sut = getRandomNumber();
-    ydata.push(sut);
+    let s = Math.floor(Math.random()*1000)
+    arr.push(s)
+    ydata.push(s)
 }
 // console.log(xdata)
-// console.log(ydata)
-
-function getRandomNumber() {
-  return Math.floor(Math.random() * 1000);
+const lttb = () => {
+    for(let i = 0; i < 500; i+=10){
+        console.log(arr.slice(i,i+10))
+        let sd = arr.slice(i,i+10)
+        let max = Math.max.apply(null, sd);
+        let min = Math.min.apply(null, sd);
+        console.log(max, min);
+        ydata.push()
+    }
 }
+lttb()
 const as = () =>{
-    let chartDom = document.getElementById('main');
+    let chartDom = document.getElementById('promote');
     let myChart = echarts.init(chartDom);
     let option;
 
     option = {
+        dataZoom: {
+            type: 'slider',
+            start: 0,
+            end: 100
+        },
         xAxis: {
             type: 'category',
-            data: xdata
         },
         yAxis: {
             type: 'value'
@@ -53,9 +61,14 @@ const as = () =>{
             {
             data: ydata,
             type: 'line',
-            smooth: true
+            smooth: true,
+            // sampling:'lttb',
+            // sampling: ()=>{
+            //     return 30
+            // }
             }
-        ]
+        ],
+
     };
 
     option && myChart.setOption(option);

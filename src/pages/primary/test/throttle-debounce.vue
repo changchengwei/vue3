@@ -20,7 +20,7 @@ import textDataObj from "@/axios/data.js";
 let debounceText = ref("")
 let throttleText = ref("")
 
-// 防抖 只会在点击操作停止后2秒触发函数
+// 防抖 只会在点击操作停止后2秒触发函数 如两秒内再次触发则时间重置 ————》 用于搜索框
 function debounce() {
   let timer
   let a = 0
@@ -33,7 +33,7 @@ function debounce() {
     },2000)
   };
 }
-// 节流 无论点击多少次，每过两秒执行一次函数
+// 节流 无论点击多少次，每过两秒执行一次函数 有规律触发函数————》 表单提交
 function throttle() {
   let timer
   let a = 0

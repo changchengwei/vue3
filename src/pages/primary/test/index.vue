@@ -1,8 +1,8 @@
 <template>
+    <echartsPromote></echartsPromote>
     <cascader></cascader>
     <formMerging></formMerging>
     <upLoad></upLoad>
-    <!-- <echartsPromote></echartsPromote> -->
     <throttleDebounce></throttleDebounce>
 </template>
 
